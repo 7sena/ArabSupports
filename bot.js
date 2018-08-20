@@ -1,18 +1,19 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-client.on('ready', () => {
-    console.log('I am ready!');
-});
-client.on('ready', () => {
-   console.log(`----------------`);
-      console.log(`Desert Bot- Scrpit By ┃ ArabSupport`);
-        console.log(`----------------`);
-      console.log(`ON ${client.guilds.size} Servers '     Bot By TEAM ArabSupport ' `);
-    console.log(`----------------`);
-  console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(` Edit FoxBot `,"http://twitch.tv/S-F")
-client.user.setStatus("dnd")
+
+client.on('message', message => {
+            if(!message.channel.guild) return;
+let args = message.content.split(' ').slice(1).join(' ');
+if (message.content.startsWith('>bcall')){
+ if (message.author.id !== '349616310734553088') return message.reply('** هذا الأمر قفط لصاحب البوت و شكراًً **')
+ if(!message.author.id === '349616310734553088') return;
+message.channel.sendMessage('جار ارسال الرسالة |:white_check_mark:')
+client.users.forEach(m =>{
+m.sendMessage(args)
+})
+}
 });
 
-client.login("NDE0NDc3NDM4ODY5ODMxNjgy.DlRVlw.S8pOCgWKUgcvEVdKafSptF-y4-w");
+
+client.login("NDgwNDIyMDQ1MTM0NjE4NjM0.DlxIXg.Kbcv382UkbtojpnX-CPJk8n1mCw")
